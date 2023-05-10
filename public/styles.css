@@ -10,6 +10,7 @@ button {
     border-bottom: 2px solid aqua;
     padding: 10px 20px;
     font-weight: bold;
+    cursor: pointer;
 }
 
 p {
