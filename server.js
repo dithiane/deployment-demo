@@ -9,5 +9,5 @@ app.get('/api/cat', (req, res) => res.send('barb'))
 app.get('/api/dog', (req, res) => res.send('cool'))
 
 app.listen(4000, 
-    () => console.log(`server running on 4004`)
+    () => console.log(`server running on 4000`)
 )
