@@ -1,5 +1,15 @@
-const btn = document.querySelector('button')
+const catBtn = document.querySelector('#cat')
+const dogBtn = document.querySelector('#dog')
 
-const clickHandler = () => alert('The cat name is: Rascal')
+const getCat = () => {
+    axios.get('http://localhost:4000/api/cat')
+        .then(res => alert(res.data))
+}
 
-btn.addEventListener('click', clickHandler)
+const getDog = () => {
+    axios.get('http://localhost:4000/api/dog')
+        .then(res => alert(res.data))
+}
+
+catBtn.addEventListener('click', getCat)
+dogBtn.addEventListener('click', getDog)
