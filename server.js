@@ -15,13 +15,25 @@ var rollbar = new Rollbar({
   captureUnhandledRejections: true
 });
 
-rollbar.log("Hello world!");
+//rollbar.log("Hello world!");
 
 
 app.get('/',(req,res) => {
     res.sendFile(path.join(__dirname,'/public/index.html'))
 })
 
-app.listen(4000, 
+app.get('/api/dog',(req, res) => {
+    try {
+        const { name } = req.query
+        res.status(200).send(name)
+    }
+    catch (err) {
+        rollbar.critical('Calling dog' )
+    }
+})
+
+
+
+app.listen(4000,
     () => console.log(`server running on 4000`)
 )
