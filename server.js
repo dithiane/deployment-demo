@@ -1,12 +1,23 @@
+require('dotenv').config()
 const express = require('express')
 const cors = require('cors')
 const app = express()
-
 app.use(cors())
-app.use(express.static(`${__dirname}/public`))
 
-app.get('/api/cat', (req, res) => res.send('barb'))
-app.get('/api/dog', (req, res) => res.send('cool'))
+const {ROLLBAR_ACCESS_TOKEN} = process.env
+
+var Rollbar = require("rollbar");
+var rollbar = new Rollbar({
+  accessToken: `${ROLLBAR_ACCESS_TOKEN}`,
+  captureUncaught: true,
+  captureUnhandledRejections: true
+});
+
+rollbar.log("Hello world!");
+
+app.get('/',(req,res) => {
+    res.sendFile(path.join(__dirname,'../public/index.html'))
+})
 
 app.listen(4000, 
     () => console.log(`server running on 4000`)
