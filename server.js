@@ -4,6 +4,7 @@ const cors = require('cors')
 const path = require('path')
 const app = express()
 app.use(cors())
+app.use(express.static(path.join(__dirname, "js")));
 
 const {ROLLBAR_ACCESS_TOKEN} = process.env
 
@@ -15,6 +16,7 @@ var rollbar = new Rollbar({
 });
 
 rollbar.log("Hello world!");
+
 
 app.get('/',(req,res) => {
     res.sendFile(path.join(__dirname,'/public/index.html'))
