@@ -22,7 +22,7 @@ app.get('/',(req,res) => {
     res.sendFile(path.join(__dirname,'/public/index.html'))
 })
 
-app.get('dog',(req, res) => {
+app.get('/api/dog',(req, res) => {
     try {
         const { name } = req.query
         res.status(200).send(name)
